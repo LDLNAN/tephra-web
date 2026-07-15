@@ -430,6 +430,27 @@
             line-height: 1.6;
         }
 
+        .download-alt {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: -35px;
+            margin-bottom: 55px;
+            text-align: center;
+        }
+
+        .alt-link {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 500;
+            margin: 0 4px;
+            transition: color 0.2s ease;
+        }
+
+        .alt-link:hover {
+            color: var(--accent-light);
+            text-decoration: underline;
+        }
+
         /* Footer */
         footer {
             border-top: 1px solid var(--border-color);
@@ -480,7 +501,7 @@
         <nav>
             <a href="#features">Features</a>
             <a href="#canvas">Canvas</a>
-            <a href="./app-bundle.zip" class="btn-header">Get App</a>
+            <a href="./tephra-windows.zip" class="btn-header">Get App</a>
         </nav>
     </header>
 
@@ -496,7 +517,7 @@
             </p>
             <div class="hero-buttons">
                 <!-- Relative pathway wired to point to compiled app bundle zip -->
-                <a href="./app-bundle.zip" class="btn-primary" id="btn-download">
+                <a href="./tephra-windows.zip" class="btn-primary" id="btn-download">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="7 10 12 15 17 10"></polyline>
@@ -505,6 +526,12 @@
                     Download App Bundle
                 </a>
                 <a href="#features" class="btn-secondary">Explore Features</a>
+            </div>
+            <div class="download-alt">
+                Download for other platforms: 
+                <a href="./tephra-windows.zip" class="alt-link">Windows (zip)</a> • 
+                <a href="./tephra-macos.zip" class="alt-link">macOS (zip)</a> • 
+                <a href="./tephra-linux.tar.gz" class="alt-link">Linux (tar.gz)</a>
             </div>
         </section>
 
@@ -595,6 +622,51 @@
         </footer>
 
     </div>
+
+    <!-- OS Detection Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnDownload = document.getElementById('btn-download');
+            const btnHeader = document.querySelector('.btn-header');
+            
+            function detectOS() {
+                const userAgent = window.navigator.userAgent.toLowerCase();
+                const platform = window.navigator.platform.toLowerCase();
+                
+                if (platform.includes('mac') || userAgent.includes('mac')) {
+                    return {
+                        name: 'macOS',
+                        file: './tephra-macos.zip',
+                        label: 'Download for macOS (Universal)'
+                    };
+                } else if (platform.includes('linux') || userAgent.includes('linux')) {
+                    return {
+                        name: 'Linux',
+                        file: './tephra-linux.tar.gz',
+                        label: 'Download for Linux (x64)'
+                    };
+                } else {
+                    return {
+                        name: 'Windows',
+                        file: './tephra-windows.zip',
+                        label: 'Download for Windows (x64)'
+                    };
+                }
+            }
+
+            const userOS = detectOS();
+            
+            if (btnDownload) {
+                btnDownload.href = userOS.file;
+                const svgIcon = btnDownload.querySelector('svg').outerHTML;
+                btnDownload.innerHTML = `${svgIcon} ${userOS.label}`;
+            }
+
+            if (btnHeader) {
+                btnHeader.href = userOS.file;
+            }
+        });
+    </script>
 
 </body>
 </html>
