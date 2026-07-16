@@ -530,11 +530,16 @@
         
         <!-- Hero Section -->
         <section class="hero">
-            <span class="badge">Local-First Spatial Workspace</span>
+            <span class="badge">Local-First Spatial Workspace — Pre-Release Alpha</span>
             <h1>Arrange your work the way you actually think</h1>
             <p class="hero-desc">
                 An infinite-canvas desktop app where the canvas is your actual files. Place notes, documents, images, audio, video, drawings, and tasks anywhere on a canvas, link them, and group them — arranged the way you actually think, not the way an app's menus make you.
             </p>
+            <div style="margin-top: -20px; margin-bottom: 30px;">
+                <span style="font-size: 0.85rem; color: var(--primary-light); background: rgba(255, 136, 0, 0.07); border: 1px solid rgba(255, 136, 0, 0.2); padding: 6px 14px; border-radius: 8px; font-weight: 600; letter-spacing: 0.2px; display: inline-flex; align-items: center; gap: 6px;">
+                    ⚠️ Note: Tephra is in active Pre-Release Alpha. Please back up your directories regularly.
+                </span>
+            </div>
             <div class="hero-buttons">
                 <!-- Relative pathway wired to point to compiled app bundle zip -->
                 <a href="./tephra-windows.zip" class="btn-primary" id="btn-download">
@@ -618,7 +623,7 @@
         </section>
 
         <!-- What it is Section -->
-        <section class="about-section" id="about" style="max-width: 800px; margin: 0 auto 80px auto; text-align: center; border: 1px solid var(--border-color); padding: 40px; border-radius: 24px; background: var(--bg-card); box-shadow: 0 10px 40px rgba(0,0,0,0.2);">
+        <section class="about-section" id="about" style="max-width: 800px; margin: 0 auto 40px auto; text-align: center; border: 1px solid var(--border-color); padding: 40px; border-radius: 24px; background: var(--bg-card); box-shadow: 0 10px 40px rgba(0,0,0,0.2);">
             <h2 style="font-size: 2rem; margin-bottom: 20px; font-weight: 700; background: linear-gradient(135deg, #ffffff 40%, var(--primary-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Arrange the way you think</h2>
             <p style="font-size: 1.15rem; color: var(--text-muted); line-height: 1.7; font-weight: 350;">
                 Tephra is a spatial, infinite-canvas desktop app for people running multi-stage projects across different media. Place notes, documents, images, audio, video, drawings, and tasks anywhere on a canvas, link them, and group them — arranged the way you actually think, not the way an app's menus make you.
@@ -627,6 +632,11 @@
                 And it's not a metaphor: <strong>the files on your canvas are your real files, and the groups you make are real folders on your disk.</strong> Organize spatially and you organize your actual filesystem.
             </p>
         </section>
+
+        <!-- Screenshot supporting visual -->
+        <div style="max-width: 1000px; margin: 0 auto 80px auto; border: 1px solid var(--border-color); border-radius: 24px; overflow: hidden; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);">
+            <img src="screenshot.png" alt="Tephra Canvas Interface Screenshot" style="width: 100%; height: auto; display: block;">
+        </div>
 
         <!-- Features Grid -->
         <section class="features" id="features">
