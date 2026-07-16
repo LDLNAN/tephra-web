@@ -230,6 +230,32 @@
             transform: translateY(-2px);
         }
 
+        /* Real product view — the canvas is the product, so show it at full
+           width before the illustrative feature mockup below. */
+        .product-shot {
+            margin: 36px auto 80px;
+            max-width: 1500px;
+            padding: 10px;
+            border: 1px solid rgba(255, 194, 97, 0.22);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.025);
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5), 0 0 50px rgba(255, 136, 0, 0.08);
+        }
+
+        .product-shot img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .product-shot figcaption {
+            padding: 12px 8px 2px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
         /* Interactive Canvas Display */
         .canvas-container {
             width: 100%;
@@ -528,6 +554,12 @@
                 <a href="https://github.com/LDLNAN/Kahurangi" class="alt-link" style="margin-top: 12px; display: inline-block;">Support development / Donate</a>
             </div>
         </section>
+
+        <!-- Real application screenshot -->
+        <figure class="product-shot">
+            <img src="tephra-canvas.png" alt="Tephra infinite canvas with linked notes, media, tasks, and groups">
+            <figcaption>Your files, arranged spatially — with links and groups that reflect how the work actually connects.</figcaption>
+        </figure>
 
         <!-- Canvas Visual Mockup -->
         <section class="canvas-container" id="canvas">
