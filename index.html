@@ -541,8 +541,8 @@
                 </span>
             </div>
             <div class="hero-buttons">
-                <!-- Relative pathway wired to point to compiled app bundle zip -->
-                <a href="https://github.com/LDLNAN/tephra-web/releases/download/v0.1.12/Tephra-Setup-v0.1.12.exe" class="btn-primary" id="btn-download">
+                <!-- Deployment rewrites this to the versioned installer asset. -->
+                <a href="https://github.com/LDLNAN/tephra-web/releases/download/v0.1.13/Tephra-Setup-v0.1.13.exe" class="btn-primary" id="btn-download">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="7 10 12 15 17 10"></polyline>
@@ -554,9 +554,14 @@
             </div>
             <div class="download-alt">
                 Download for other platforms: 
-                <a href="https://github.com/LDLNAN/tephra-web/releases/download/v0.1.12/Tephra-Setup-v0.1.12.exe" class="alt-link" id="link-win">Windows</a> • 
+                <a href="https://github.com/LDLNAN/tephra-web/releases/download/v0.1.13/Tephra-Setup-v0.1.13.exe" class="alt-link" id="link-win">Windows installer</a> •
+                <a href="https://github.com/LDLNAN/tephra-web/releases/download/v0.1.13/tephra-windows.zip" class="alt-link">portable ZIP</a> •
                 <a href="./tephra-macos.zip" class="alt-link" id="link-mac">macOS</a> • 
-                <a href="https://github.com/LDLNAN/tephra-web/releases/latest/download/tephra-linux.tar.gz" class="alt-link" id="link-linux">Linux</a>
+                <a href="https://github.com/LDLNAN/tephra-web/releases/download/v0.1.13/tephra-linux.tar.gz" class="alt-link" id="link-linux">Linux</a>
+                <br>
+                <a href="https://github.com/LDLNAN/tephra-web/releases/download/v0.1.13/tephra_0.1.13_amd64.deb" class="alt-link" id="link-deb">Debian / Ubuntu (.deb)</a> •
+                <a href="https://github.com/LDLNAN/tephra-web/releases/download/v0.1.13/tephra-0.1.13-1.x86_64.rpm" class="alt-link" id="link-rpm">Fedora / RPM (.rpm)</a> •
+                <a href="https://aur.archlinux.org/packages/tephra-bin" class="alt-link">Arch / AUR</a>
                 <br>
                 <a href="https://github.com/LDLNAN/Kahurangi" class="alt-link" style="margin-top: 12px; display: inline-block;">Support development / Donate</a>
             </div>
@@ -632,11 +637,6 @@
                 And it's not a metaphor: <strong>the files on your canvas are your real files, and the groups you make are real folders on your disk.</strong> Organize spatially and you organize your actual filesystem.
             </p>
         </section>
-
-        <!-- Screenshot supporting visual -->
-        <div style="max-width: 1000px; margin: 0 auto 80px auto; border: 1px solid var(--border-color); border-radius: 24px; overflow: hidden; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);">
-            <img src="screenshot.png" alt="Tephra Canvas Interface Screenshot" style="width: 100%; height: auto; display: block;">
-        </div>
 
         <!-- Features Grid -->
         <section class="features" id="features">
@@ -733,13 +733,13 @@
                 } else if (platform.includes('linux') || userAgent.includes('linux')) {
                     return {
                         name: 'Linux',
-                        file: 'https://github.com/LDLNAN/tephra-web/releases/latest/download/tephra-linux.tar.gz',
+                        file: 'https://github.com/LDLNAN/tephra-web/releases/download/v0.1.13/tephra-linux.tar.gz',
                         label: 'Download (free)'
                     };
                 } else {
                     return {
                         name: 'Windows',
-                        file: 'https://github.com/LDLNAN/tephra-web/releases/download/v0.1.12/Tephra-Setup-v0.1.12.exe',
+                        file: 'https://github.com/LDLNAN/tephra-web/releases/download/v0.1.13/Tephra-Setup-v0.1.13.exe',
                         label: 'Download (free)'
                     };
                 }
@@ -753,9 +753,9 @@
                 btnDownload.innerHTML = `${svgIcon} ${userOS.label}`;
             }
 
-            if (linkWin) linkWin.href = 'https://github.com/LDLNAN/tephra-web/releases/download/v0.1.12/Tephra-Setup-v0.1.12.exe';
+            if (linkWin) linkWin.href = 'https://github.com/LDLNAN/tephra-web/releases/download/v0.1.13/Tephra-Setup-v0.1.13.exe';
             if (linkMac) linkMac.href = './tephra-macos.zip';
-            if (linkLinux) linkLinux.href = 'https://github.com/LDLNAN/tephra-web/releases/latest/download/tephra-linux.tar.gz';
+            if (linkLinux) linkLinux.href = 'https://github.com/LDLNAN/tephra-web/releases/download/v0.1.13/tephra-linux.tar.gz';
         });
     </script>
 
