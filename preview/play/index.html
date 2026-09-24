@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="robots" content="noindex">
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/tephra-web/preview/play/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Tephra — a spatial canvas for your notes, files and ideas, running in your browser.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Tephra">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>Tephra</title>
+  <link rel="manifest" href="manifest.json">
+  <script>
+    // Folders this browser was given, kept so they can be reopened: a folder
+    // handle survives in IndexedDB (it is structured-cloneable), and the
+    // browser asks again for permission when one is reopened. Keyed by the
+    // folder's name, so a second folder with the same name replaces the first.
+    // Read from Dart by `browser_fs_web.dart`.
+    window.tephraFolders = (() => {
+      const db = () => new Promise((resolve, reject) => {
+        const request = indexedDB.open('tephra', 1);
+        request.onupgradeneeded = () =>
+          request.result.createObjectStore('folders', { keyPath: 'name' });
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => reject(request.error);
+      });
+      const run = async (mode, body) => {
+        const store = (await db()).transaction('folders', mode).objectStore('folders');
+        return new Promise((resolve, reject) => {
+          const request = body(store);
+          request.onsuccess = () => resolve(request.result);
+          request.onerror = () => reject(request.error);
+        });
+      };
+      return {
+        save: (handle) => run('readwrite', (s) => s.put({ name: handle.name, handle, opened: Date.now() })),
+        list: async () => ((await run('readonly', (s) => s.getAll())) || []).sort((a, b) => b.opened - a.opened),
+        forget: (name) => run('readwrite', (s) => s.delete(name)),
+      };
+    })();
+  </script>
+</head>
+<body>
+  <!--
+    You can customize the "flutter_bootstrap.js" script.
+    This is useful to provide a custom configuration to the Flutter loader
+    or to give the user feedback during the initialization process.
+
+    For more details:
+    * https://docs.flutter.dev/platform-integration/web/initialization
+  -->
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
